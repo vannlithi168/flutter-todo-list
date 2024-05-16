@@ -3,19 +3,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:todo_list/constants/app_style.dart';
+import 'package:todo_list/provider/radio_provider.dart';
 import 'package:todo_list/widget/date_time_widget.dart';
 import 'package:todo_list/widget/radio_widget.dart';
 import 'package:todo_list/widget/textfield_widget.dart';
 
-class AddNewTaskModel extends StatelessWidget {
+class AddNewTaskModel extends ConsumerWidget {
   const AddNewTaskModel({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       padding: EdgeInsets.all(30),
       height: MediaQuery.of(context).size.height * 0.75,
@@ -66,18 +68,27 @@ class AddNewTaskModel extends StatelessWidget {
                 child: RadioWidget(
                   categColor: Colors.green,
                   titleRadio: 'LRN',
+                  valueInput: 1,
+                  onChangeValue: () =>
+                      ref.read(radioProvider.notifier).update((state) => 1),
                 ),
               ),
               Expanded(
                 child: RadioWidget(
                   categColor: Colors.blue.shade700,
                   titleRadio: 'WRK',
+                  valueInput: 2,
+                  onChangeValue: () =>
+                      ref.read(radioProvider.notifier).update((state) => 2),
                 ),
               ),
               Expanded(
                 child: RadioWidget(
                   categColor: Colors.amberAccent.shade700,
                   titleRadio: 'GEN',
+                  valueInput: 3,
+                  onChangeValue: () =>
+                      ref.read(radioProvider.notifier).update((state) => 3),
                 ),
               ),
             ],

@@ -2,16 +2,19 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:todo_list/common/show_model.dart';
 
 void main() {
   runApp(
-    MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "Flutter Project Template",
-      theme: ThemeData(),
-      home: const HomePage(),
+    ProviderScope(
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: "Flutter Project Template",
+        theme: ThemeData(),
+        home: const HomePage(),
+      ),
     ),
   );
 }
